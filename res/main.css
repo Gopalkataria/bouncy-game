@@ -1,0 +1,230 @@
+/**
+Gopal kataria, © 2020 
+*/
+
+
+
+.sidebar {
+
+    background: rgb(0, 0, 0) ;
+
+    position: fixed;
+
+    top : 0px ;
+
+    z-index: 100 ;
+
+}
+
+ #left {
+
+    width: 20px ;
+    height: 100%;
+
+    left: 0px;
+
+}
+
+#top {
+    width: 100%;
+    height: 20px ;
+    left: 0px ;
+
+}
+
+#right {
+    width: 20px ;
+    height: 100%;
+    right: 0px;
+}
+
+#ball {
+    position: absolute ;
+    top: 20%;
+    left: 50%;
+    height: 75px ;
+    width: 75px ;
+    background: rgba(54, 0, 248, 0.938) ;
+    border : 0.05px solid ;
+    border-radius: 50% ;
+    border-color: none ;
+    animation: chameleon 60s ease-in-out infinite ;
+}
+
+@keyframes chameleon {
+    0% {
+
+
+    background: rgba(54, 0, 248, 0.959) ;
+
+    }
+     20% {
+
+
+    background: rgba(248, 0, 136, 0.959) ;
+
+    }
+     40% {
+
+
+    background: rgba(248, 0, 0, 0.959) ;
+
+    }
+     60% {
+
+
+    background: rgba(248, 232, 0, 0.959) ;
+
+    }
+     75% {
+
+    background: rgba(0, 248, 41, 0.959) ;
+
+    }
+    90% {
+
+    background: rgba(0, 248, 248, 0.959) ;
+
+    }
+}
+
+#bouncer {
+
+    background: black ;
+    width: 100px ;
+    height: 25px ;
+    position: fixed ;
+    align-content: center ;
+    bottom: 5% ;
+    left : 50% ;
+    z-index: 80 ;
+
+
+}
+
+#half {
+    position: fixed;
+    top : 0% ;
+    left : 0% ;
+    height: 100% ;
+    width: 50% ;
+    background: transparent ;
+    z-index: 100 ;
+}
+
+
+
+#score {
+    position: fixed ;
+    top: 35% ;
+    left : 25% ;
+    color: rgba(0, 0, 0, 0.554);
+    font-size: 56px ;
+    font-family: monospace ;
+    text-align: center ;
+    width : 50% ;
+    font-weight: 900 ;
+    height:50% ;
+
+}
+@media (max-width : 400px ){
+    #score {
+            font-size: 36px ;
+    }
+
+}
+
+
+
+
+#WxH {
+    position: fixed;
+    z-index: 90 ;
+    top: 0%;
+    left: 0% ;
+    height: 100% ;
+    width: 99% ;
+    background: #73ff7f13;
+}
+
+
+#canvas {
+position: fixed;
+top: 0% ;
+left : 0% ;
+
+background: transparent ;
+z-index: 80
+;
+
+}
+
+
+.purple_back {
+   position: fixed;
+    z-index: 110;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(24, 24, 24);
+    box-shadow: -2px -2px 7px 0px black;
+
+}
+
+#replay{
+
+    display: none ;
+
+}
+
+.play_btn {
+
+    color: rgb(243, 243, 243);
+        background-color: rgba(54, 0, 248, 0.938);
+        border: 3px solid rgba(54, 0, 248, 0.938);
+        border-radius: 8px;
+        position: relative;
+        left: 30%;
+        height: 25%;
+        top: 65% ;
+        width: 40%;
+        font-size: xx-large;
+        font-weight: 900;
+        font-family: fantasy;
+
+        box-shadow: 0px 0px 16px 8px black;
+}
+
+.play_btn:hover {
+    font-size:  xx-large ;
+    box-shadow:  0px 0px 14px 5px black;
+}
+
+.play_btn:active {
+    color: rgb(117, 255, 181);
+    box-shadow: 0px 0px 12px 8px rgb(24, 24, 24) ;
+
+}
+
+
+
+#replay_btn {
+ color: rgb(255, 255, 255);
+
+
+}
+
+#out_score {
+    color: rgba(255, 255, 255, 0.685) ;
+        position: fixed ;
+        font-family: monospace ;
+    top: 15% ;
+    left : 15% ;
+font-weight: 900 ;
+    font-size: 56px ;
+z-index: 110 ;
+    text-align: center ;
+    width : 70% ;
+    height:35% ;
+}
