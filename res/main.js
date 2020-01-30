@@ -108,6 +108,11 @@ class Sprite_ball {
     constructor(id, coords_allowed) {
 
 
+        this.difficulty = 2;
+
+        this.difficulty_incrementor = 2 ;
+
+
         this.gameIsRunning = false;
 
         this.score = 0
@@ -242,10 +247,10 @@ class Sprite_ball {
 
 
 
-            if (this.speed_x < 0 ) {
+            if (this.speed_x < 0) {
 
                 this.bounce(this.direction.left) // bounce only after the reversal
-            } else if (this.speed_x > 0 ) {
+            } else if (this.speed_x > 0) {
                 this.bounce(this.direction.right) // bounce only after the reversal
             }
 
@@ -359,7 +364,30 @@ class Sprite_ball {
 
 
     rand_speed(speed) {
-        let n_speed = speed -  1 ;
+
+        if (speed > 10) {
+            return 8 ;
+        }
+        if (speed < -10) {
+            return -8 ;
+        }
+
+        let n_speed = 0;
+        const change_speed = (this.difficulty / 25 );
+
+        if (this.score % this.difficulty_incrementor == 0) {
+            n_speed = speed - change_speed;
+        } else {
+            n_speed = speed + change_speed;
+                }
+
+        if (this.score % 5 == 0) {
+
+            this.difficulty += 1;
+            this.difficulty_incrementor += 1;
+
+        }
+
 
 
 
@@ -454,7 +482,7 @@ class Bouncer_sprite extends Sprite {
                 if (this.coords.x + 40 < Ball.coords_allowed.bottom.X) {
 
 
-                    this.jump_x(this.coords.x += Math.abs( Ball.speed_x ) )
+                    this.jump_x(this.coords.x += Math.abs(Ball.speed_x))
                     this.safe = {
                         min: this.coords.x - 10,
                         max: this.coords.x + 110,
@@ -468,7 +496,7 @@ class Bouncer_sprite extends Sprite {
                 if (this.coords.x > 20) {
 
 
-                    this.jump_x(this.coords.x -= Math.abs( Ball.speed_x ) )
+                    this.jump_x(this.coords.x -= Math.abs(Ball.speed_x))
                     this.safe = {
                         min: this.coords.x - 10,
                         max: this.coords.x + 110,
@@ -514,6 +542,8 @@ var half = document.getElementById('half')
 const Top = document.getElementById('top');
 const Left = document.getElementById('left');
 const Right = document.getElementById('right');
+
+
 
 var canvas = document.createElement('canvas')
 canvas.id = "canvas"
