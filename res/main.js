@@ -110,7 +110,7 @@ class Sprite_ball {
 
         this.difficulty = 2;
 
-        this.difficulty_incrementor = 2 ;
+        this.difficulty_incrementor = 2;
 
 
         this.gameIsRunning = false;
@@ -192,6 +192,7 @@ class Sprite_ball {
 
     /**
      * X axis speed , don't use speed.x .
+     * alters the horizontal speed
      */
     get speed_x() {
 
@@ -199,27 +200,24 @@ class Sprite_ball {
 
     }
 
-    /**
-         * set it to a diffrent value to change it
-        */
+/**
+ * Y axis speed , don't use speed.y .
+ * alters the vertical speed
+ */
     get speed_y() {
 
         return this.speed.y;
 
     }
 
-    /**
-     * Y axis speed , don't use speed.y .
-     */
+
     set speed_x(speed) {
 
         this.speed.x = speed;
 
     }
 
-    /**
-         * set it to a diffrent value to change it
-        */
+
     set speed_y(speed) {
 
         this.speed.y = speed;
@@ -338,9 +336,9 @@ class Sprite_ball {
 
             this.speed_y = (- this.speed_y);
 
-            this.speed_y = this.rand_speed(this.speed_y)
+            this.speed_x = this.rand_ang(this.speed_x)
 
-            this.speed_x = this.rand_speed(this.speed_x)
+            this.speed_y = this.rand_speed(this.speed_y)
 
 
 
@@ -351,9 +349,9 @@ class Sprite_ball {
 
             this.speed_y = (- this.speed_y);
 
-            this.speed_y = this.rand_speed(this.speed_y)
+            this.speed_x = this.rand_ang(this.speed_x)
 
-            this.speed_x = this.rand_speed(this.speed_x)
+            this.speed_y = this.rand_speed(this.speed_y)
 
         }
 
@@ -362,24 +360,35 @@ class Sprite_ball {
 
     }
 
+    rand_ang(angle) {
+
+        if (this.score % 2 == 0) {
+            return angle + 0.5
+        } else {
+            return angle - 0.5
+        }
+
+
+    }
 
     rand_speed(speed) {
 
         if (speed > 10) {
-            return 8 ;
+            return 8;
         }
         if (speed < -10) {
-            return -8 ;
+            return -8;
         }
 
         let n_speed = 0;
-        const change_speed = (this.difficulty / 25 );
+        const change_speed = (this.difficulty / 25);
+
 
         if (this.score % this.difficulty_incrementor == 0) {
             n_speed = speed - change_speed;
         } else {
             n_speed = speed + change_speed;
-                }
+        }
 
         if (this.score % 5 == 0) {
 
@@ -482,7 +491,7 @@ class Bouncer_sprite extends Sprite {
                 if (this.coords.x + 40 < Ball.coords_allowed.bottom.X) {
 
 
-                    this.jump_x(this.coords.x += Math.abs(Ball.speed_x))
+                    this.jump_x(this.coords.x += Math.abs(Ball.speed_x) + 1 )
                     this.safe = {
                         min: this.coords.x - 10,
                         max: this.coords.x + 110,
@@ -496,7 +505,7 @@ class Bouncer_sprite extends Sprite {
                 if (this.coords.x > 20) {
 
 
-                    this.jump_x(this.coords.x -= Math.abs(Ball.speed_x))
+                    this.jump_x(this.coords.x -= Math.abs(Ball.speed_x) + 1 )
                     this.safe = {
                         min: this.coords.x - 10,
                         max: this.coords.x + 110,
@@ -728,3 +737,8 @@ document.getElementById('replay_btn').addEventListener('click', () => {
 })
 
 
+window.addEventListener("resize", function () {
+
+    window.location.reload(false);
+
+}, false);
