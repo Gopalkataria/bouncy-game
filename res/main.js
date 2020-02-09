@@ -482,8 +482,8 @@ class Bouncer_sprite extends Sprite {
     */
     follow_user_phone(e) {
 
-        let given_x = e.clientX;
 
+        const timeinterval = 5;
 
         if (e.srcElement !== half) {
             this.timehandler = setInterval(() => {
@@ -498,7 +498,7 @@ class Bouncer_sprite extends Sprite {
                     }
 
                 }
-            }, 10);
+            }, timeinterval);
         } else {
             this.timehandler = setInterval(() => {
 
@@ -512,7 +512,7 @@ class Bouncer_sprite extends Sprite {
                     }
 
                 }
-            }, 10);
+            }, timeinterval );
         }
 
 
