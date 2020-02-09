@@ -6,7 +6,7 @@ Gopal kataria, © 2020
 
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "physiczard";
+const CACHE = "physiczard.1";
 
 // TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "index.html";
 const offlineFallbackPage = "index.html";
