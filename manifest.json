@@ -1,8 +1,8 @@
 {
   "name": "Physiczard",
   "short_name": "Physizard",
-  "theme_color": "#150974",
-  "background_color": "#e91031",
+  "theme_color": "#000000",
+  "background_color": "#b9b9b9bb",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",

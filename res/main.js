@@ -483,7 +483,7 @@ class Bouncer_sprite extends Sprite {
     follow_user_phone(e) {
 
 
-        const timeinterval = 5;
+        const timeinterval = 10 ;
 
         if (e.srcElement !== half) {
             this.timehandler = setInterval(() => {
@@ -609,6 +609,10 @@ if (!('ontouchstart' in window || navigator.msMaxTouchPoints)) {
     });
 } else {
 
+    WxH.addEventListener("touchmove", e => {
+        Bouncer.follow_user(e)
+    })
+
 
     WxH.addEventListener('touchstart', e => {
 
@@ -620,6 +624,10 @@ if (!('ontouchstart' in window || navigator.msMaxTouchPoints)) {
 
         Bouncer.stop_follow_user_phone()
 
+    })
+
+    half.addEventListener("touchmove", e => {
+        Bouncer.follow_user(e)
     })
 
     half.addEventListener('touchstart', e => {
