@@ -200,10 +200,10 @@ class Sprite_ball {
 
     }
 
-/**
- * Y axis speed , don't use speed.y .
- * alters the vertical speed
- */
+    /**
+     * Y axis speed , don't use speed.y .
+     * alters the vertical speed
+     */
     get speed_y() {
 
         return this.speed.y;
@@ -292,7 +292,7 @@ class Sprite_ball {
 
 
     stop() {
-        
+
         this.speed_x = 0
         this.speed_y = 0
         this.gameIsRunning = false
@@ -482,7 +482,7 @@ class Bouncer_sprite extends Sprite {
     follow_user_phone(e) {
 
 
-        const timeinterval = 10 ;
+        const timeinterval = 10;
 
         if (e.srcElement !== half) {
             this.timehandler = setInterval(() => {
@@ -490,7 +490,7 @@ class Bouncer_sprite extends Sprite {
                 if (this.coords.x + 40 < Ball.coords_allowed.bottom.X) {
 
 
-                    this.jump_x(this.coords.x += Math.abs(Ball.speed_x) + 1 )
+                    this.jump_x(this.coords.x += Math.abs(Ball.speed_x) + 1)
                     this.safe = {
                         min: this.coords.x - 10,
                         max: this.coords.x + 110,
@@ -504,14 +504,14 @@ class Bouncer_sprite extends Sprite {
                 if (this.coords.x > 20) {
 
 
-                    this.jump_x(this.coords.x -= Math.abs(Ball.speed_x) + 1 )
+                    this.jump_x(this.coords.x -= Math.abs(Ball.speed_x) + 1)
                     this.safe = {
                         min: this.coords.x - 10,
                         max: this.coords.x + 110,
                     }
 
                 }
-            }, timeinterval );
+            }, timeinterval);
         }
 
 
@@ -694,7 +694,7 @@ console.log(width, " x ", height)
 
 
 // regitering the service worker
-if ("serviceWorker" in navigator) { // checking if the browser can use it
+if (navigator.serviceWorker) { // checking if the browser can use it
     window.addEventListener('load', function () {
         // registering
         console.log("trying to register service worker ")
