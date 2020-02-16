@@ -292,6 +292,7 @@ class Sprite_ball {
 
 
     stop() {
+        
         this.speed_x = 0
         this.speed_y = 0
         this.gameIsRunning = false
@@ -402,9 +403,7 @@ class Sprite_ball {
 
         return n_speed
 
-        /**
-         * work up here
-         */
+
 
 
     }
