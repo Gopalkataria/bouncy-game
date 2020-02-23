@@ -3,6 +3,16 @@
 
 /**
 Gopal kataria, © 2020
+
+this is the main javascript file for the game
+access functions and classes using alt+s in vscode
+names are self describing ( at least for me )
+no convention is followed
+class names in CamelCase with snake_case functions
+Classes were used for scalability
+
+read slowley if not seen in code in a while
+
 */
 
 
