@@ -477,59 +477,53 @@ class Bouncer_sprite extends Sprite {
     * takes mouse event and follows the user on phone by touch
     * touch on left to move left and right to move right
     * kepps moving till mouseup evt
-    * @param {MouseEvent} e event cauth by the listener
+    * @param {MouseEvent} e event caugth by the listener
     */
     follow_user_phone(e) {
 
 
         const timeinterval = 10;
 
-        if (e.srcElement !== half) {
-            this.timehandler = setInterval(() => {
-
-                if (this.coords.x + 40 < Ball.coords_allowed.bottom.X) {
 
 
-                    this.jump_x(this.coords.x += Math.abs(Ball.speed_x) + 1)
-                    this.safe = {
-                        min: this.coords.x - 10,
-                        max: this.coords.x + 110,
-                    }
-
-                }
-            }, timeinterval);
-        } else {
-            this.timehandler = setInterval(() => {
-
-                if (this.coords.x > 20) {
 
 
-                    this.jump_x(this.coords.x -= Math.abs(Ball.speed_x) + 1)
-                    this.safe = {
-                        min: this.coords.x - 10,
-                        max: this.coords.x + 110,
-                    }
 
-                }
-            }, timeinterval);
+        if (this.coords.x + 40 < Ball.coords_allowed.bottom.X) {
+
+
+
+            this.jump_x(e.clientX)
+
+            console.log(e.clientX)
+
+            this.safe = {
+                min: this.coords.x - 10,
+                max: this.coords.x + 110,
+            }
+
+        }
+
+
+        if (this.coords.x > 20) {
+
+
+            this.jump_x(e.clientX)
+            this.safe = {
+                min: this.coords.x - 10,
+                max: this.coords.x + 110,
+            }
+
         }
 
 
 
+
     }
-    /**
-        *
-        * stops moving the bouncer  mousedown evt
-        */
-    stop_follow_user_phone() {
-        clearInterval(this.timehandler)
-        this.safe = {
-            min: this.coords.x - 10,
-            max: this.coords.x + 110,
-        }
-    }
+
 
 }
+
 
 /**
  *
@@ -590,6 +584,18 @@ const Sidebars = [Left, Top, Right]
 
 
 
+/**
+
+ * speed of the ball is defined over here throughout the game on restart as well as first start
+ * tweak it here
+ * it doen't affect during the gameplay
+ */
+function speed_init() {
+    Ball.speed_x = 5;
+    Ball.speed_y = 5;
+}
+
+
 function reset_all_sides() {
     for (let index = 0; index < Sidebars.length; index++) {
         const side = Sidebars[index];
@@ -599,47 +605,38 @@ function reset_all_sides() {
 }
 
 
+//checking if device is a mobile or not
+
+
 if (!('ontouchstart' in window || navigator.msMaxTouchPoints)) {
 
+    //it is not a mobile
     document.addEventListener('mousemove', e => {
 
         Bouncer.follow_user(e)
 
     });
+
 } else {
 
-    WxH.addEventListener("touchmove", e => {
+
+    // it is a mobile
+    WxH.addEventListener("mousedown", e => {
         Bouncer.follow_user(e)
     })
 
 
-    WxH.addEventListener('touchstart', e => {
 
-        Bouncer.follow_user_phone(e)
 
-    })
 
-    WxH.addEventListener('touchend', e => {
 
-        Bouncer.stop_follow_user_phone()
-
-    })
-
-    half.addEventListener("touchmove", e => {
+    half.addEventListener("mousedown", e => {
         Bouncer.follow_user(e)
     })
 
-    half.addEventListener('touchstart', e => {
 
-        Bouncer.follow_user_phone(e)
 
-    })
 
-    half.addEventListener('touchend', e => {
-
-        Bouncer.stop_follow_user_phone()
-
-    })
 }
 
 
@@ -656,8 +653,7 @@ function game_over() {
 
 // speeding here
 
-Ball.speed_x = 5
-Ball.speed_y = 5
+speed_init()
 Ball.gameIsRunning = true;
 
 
@@ -736,8 +732,7 @@ document.getElementById('play').addEventListener('click', () => {
 document.getElementById('replay_btn').addEventListener('click', () => {
 
 
-    Ball.speed_x = 5
-    Ball.speed_y = 5
+    speed_init();
 
     replay()
 
@@ -749,3 +744,6 @@ window.addEventListener("resize", function () {
     window.location.reload(false);
 
 }, false);
+
+
+
