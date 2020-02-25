@@ -5,7 +5,7 @@ main css file for the game
 ** very important
 
 do not change for fun
-first try in chrome devtools then copy paste !!! 
+first try in chrome devtools then copy paste !!!
 
 */
 
@@ -108,12 +108,10 @@ first try in chrome devtools then copy paste !!!
     left : 50% ;
     z-index: 80 ;
 
-    box-shadow: 0px 3px 6px 1px #767676;
-
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius:  10px
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius:  5px
 
 }
 

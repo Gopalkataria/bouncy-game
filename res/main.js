@@ -240,6 +240,11 @@ class Sprite_ball {
      * @description Move the ball
      */
     move() {
+
+        if (this.gameIsRunning) {
+
+            // onlyif game is runnig we'll draw the next frame
+
         let current_y = this.coords.y;
         let new_y = current_y + this.speed_y;
 
@@ -297,6 +302,7 @@ class Sprite_ball {
 
 
         }
+    }
 
     }
 
@@ -311,12 +317,20 @@ class Sprite_ball {
 
     }
 
+
+    pause() {
+        this.gameIsRunning = false;
+        this.clear()
+        this.score = 6
+    }
+
     start() {
 
         Ball.gameIsRunning = true
         Ball.jump_x(50)
         Ball.jump_y(50)
         window.requestAnimationFrame(main_thread);
+        if (this.speed_x == 0) { speed_init() }
 
     }
 
@@ -613,6 +627,26 @@ function reset_all_sides() {
 
     }
 }
+
+//easter egg
+// 🥚🐰
+// stop the ball when s key is pressed on the keyboard
+// start again when anything else is pressed on the keyboard
+
+
+
+window.addEventListener('keypress', (e) => {
+    if (e.key == 's' || 'S') {
+
+        if ( ! Ball.gameIsRunning ) {
+            Ball.start()
+        } else {
+            Ball.pause()
+        }
+    }
+
+})
+
 
 
 //checking if device is a mobile or not
